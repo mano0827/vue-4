@@ -20,7 +20,7 @@
       </tr>  
     </table>
 
-    <button @click="signUp">新規登録</button>
+    <button @click="signUp" class="link-signup">新規登録</button>
     <router-link class="link-signin" to="/signin">ログインはこちらから</router-link>
 
   
@@ -31,7 +31,7 @@
 
 <script>
   import firebase from 'firebase'
-  
+
 export default{
   name:'Signup',
   data(){
@@ -45,7 +45,6 @@ export default{
     signUp:function(){
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
       .then(
-        
         )
       .catch(
         )
@@ -57,6 +56,33 @@ export default{
 
 
 <style scoped>
+.link-signup{
+  color: rgb(32, 130, 155);
+  border: rgb(32, 130, 155) solid 2px;
+  text-decoration: none;
+  border-radius: 7px;
+  margin-top: 10px;
+  padding: 9px;
+  font-weight: bold;
+  background: white;
+}
+
+:hover.link-signup{
+  background: rgb(68, 163, 187);
+  transition: 0.3s;
+  color: aliceblue;
+}
+
+
+.link-signin{
+    color: rgb(32, 130, 155);
+    text-decoration: none;
+}
+
+:hover.link-signin{
+  text-decoration: underline;
+}
+
 .signup{
   display: flex;
   flex-flow: column nowrap;

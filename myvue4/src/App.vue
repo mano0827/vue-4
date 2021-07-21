@@ -1,10 +1,5 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/signup">新規登録</router-link>｜
-      <router-link to="/signin">ログイン</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
