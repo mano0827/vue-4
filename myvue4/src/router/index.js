@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import Signup from '../views/Signup.vue'
+import Home from '../views/Home.vue'
 import Signin from '../views/Signin.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home
   },
   {
-    path: '/signup',
+    path: '/',
     name: 'Signup',
     component:Signup
   },

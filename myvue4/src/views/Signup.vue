@@ -1,6 +1,6 @@
 
 <template>
-  <div class="signup">
+  <div class="form">
     
     <img alt="Vue logo" src="../assets/logo.png">
 
@@ -30,7 +30,6 @@
 
 
 <script>
-  import firebase from 'firebase'
 
 export default{
   name:'Signup',
@@ -42,12 +41,12 @@ export default{
     }
   },
   methods:{
-    signUp:function(){
-      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-      .then(
-        )
-      .catch(
-        )
+    signUp(){
+     this.$store.dispatch('signUp',{
+       userName:this.userName,
+       email:this.email,
+       password:this.password
+     })
     }
   }
 }
@@ -55,7 +54,7 @@ export default{
 </script>
 
 
-<style scoped>
+<style>
 .link-signup{
   color: rgb(32, 130, 155);
   border: rgb(32, 130, 155) solid 2px;
@@ -83,7 +82,7 @@ export default{
   text-decoration: underline;
 }
 
-.signup{
+.form{
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
