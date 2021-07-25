@@ -8,7 +8,7 @@
     <table>
       <tr>
         <td>ユーザー名</td>
-        <td><input type="text" placeholder="userName" v-model='userName'></td>
+        <td><input type="text" placeholder="userName" v-model='name'></td>
       </tr>
       <tr>
         <td>メールアドレス</td>
@@ -35,7 +35,7 @@ export default{
   name:'Signup',
   data(){
     return{
-      userName:'',
+      name:'',
       email:'',
       password:''
     }
@@ -43,7 +43,7 @@ export default{
   methods:{
     signUp(){
      this.$store.dispatch('signUp',{
-       userName:this.userName,
+       name:this.name,
        email:this.email,
        password:this.password
      })

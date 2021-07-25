@@ -7,15 +7,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userName: '',
-    email: '',
-    password: ''
+    user: {
+      name: '',
+      email: '',
+      password: ''
+    }
   },
   mutations: {
-    AddToState: function (state, payload) {
-      state.email = payload.email
-      state.password = payload.password
-      state.userName = payload.userName
+    setUser: function (user, payload) {
+      user.email = payload.email
+      user.password = payload.password
+      user.name = payload.name
 
     }
   },
@@ -24,11 +26,11 @@ export default new Vuex.Store({
       firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
         .then(() => {
           firebase.auth().currentUser.updateProfile({
-            displayName: payload.userName,
+            displayName: payload.name,
           },
           )
             .then(() => {
-              context.commit('AddToState', payload)
+              context.commit('setUser', payload)
             })
         })
         .catch(
