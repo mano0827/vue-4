@@ -13,6 +13,17 @@ export default new Vuex.Store({
       password: ''
     }
   },
+  getters: {
+    email(state) {
+      return state.email;
+    },
+    password(state) {
+      return state.password;
+    },
+    name(state) {
+      return state.name;
+    },
+  },
   mutations: {
     setUser: function (user, payload) {
       user.email = payload.email
@@ -34,6 +45,7 @@ export default new Vuex.Store({
             })
         })
         .catch(
+          alert('入力に不備があります')
         )
     }
   },
