@@ -15,7 +15,9 @@ import firebase from "firebase";
 export default {
   name: "Home",
   data() {
-    return {};
+    return {
+      // name: firebase.auth().currentUser.this.user.name,
+    };
   },
   methods: {
     signOut() {

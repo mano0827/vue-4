@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import firebase from 'firebase'
+import router from '@/router'
 
 
 Vue.use(Vuex)
@@ -43,11 +44,32 @@ export default new Vuex.Store({
             .then(() => {
               context.commit('setUser', payload)
             })
+            .then(() => {
+              router.push('/home')
+            })
         })
-        .catch(
-          alert('入力に不備があります')
-        )
-    }
+        .catch(function (error) {
+          alert('ログインできません（' + error.message + '）');
+        });
+    },
+    signIn: function (context, payload) {
+      firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
+        .then(() => {
+          firebase.auth().currentUser.updateProfile({
+            displayName: payload.name,
+          },
+          )
+            .then(() => {
+              context.commit('setUser', payload)
+            })
+            .then(() => {
+              router.push('/home')
+            })
+        })
+        .catch(function (error) {
+          alert('パスワードもしくはメールアドレスが異なります（' + error.message + '）');
+        });
+    },
   },
   modules: {
   }

@@ -18,8 +18,6 @@
 </template>
 
 <script>
-import firebase from "firebase";
-
 export default {
   name: "signin",
   data() {
@@ -30,16 +28,12 @@ export default {
   },
   methods: {
     signIn() {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(() => {
-          this.$router.push("/home");
-        })
-        .catch(() => {
-          alert("メールアドレスまたはパスワードが正しくありません");
-        });
+      this.$store.dispatch("signIn", {
+        email: this.email,
+        password: this.password,
+      });
     },
   },
 };
 </script>
+
